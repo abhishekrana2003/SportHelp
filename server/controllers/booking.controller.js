@@ -12,6 +12,9 @@ import {
 export async function viewBookings(req, res) {
   const { date, sport, center } = req.query;
   try {
+    if (!Date.parse(date)) {
+      return response_400(res, "Invalid date format. Please use ISO 8601 format (YYYY-MM-DD).");
+    }
     const foundSport = await Sport.findById(sport);
     if (!foundSport) {
       return response_400(res, "Sport not found");
