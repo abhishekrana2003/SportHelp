@@ -18,6 +18,12 @@ app.use('/center', centerRoutes);
 import sportRoutes from './routes/sport.routes.js';
 app.use('/sport', sportRoutes);
 
+import courtRoutes from './routes/court.routes.js';
+app.use('/court', courtRoutes);
+
+import bookingRoutes from './routes/booking.routes.js';
+app.use('/booking', bookingRoutes);
+
 app.listen(
     process.env.PORT ? process.env.PORT : 8080,
     process.env.HOST ? process.env.HOST : '127.0.0.1',
