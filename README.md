@@ -26,6 +26,7 @@ This project is a booking management system for a sports technology company, des
 - The application assumes that the user has an active internet connection and a MongoDB instance running.
 - Each booking slot is precisely 60 minutes long.
 - Currently, no payment gateway is implemented (future improvement).
+- Currently the backend is hosted on a free plan on Render, so it takes about 1-2 mins to boot up the machine after some rest period.
 
 ## Special Instructions
 
