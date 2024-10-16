@@ -1,6 +1,6 @@
 import CalendarItem from "../misc/calendarItem"
 import { useEffect,useState } from "react";
-export default function CourtColumn({ id,courtNumber, bookings,selectedDate }){
+export default function CourtColumn({ id,courtNumber, bookings,selectedDate,trigger }){
     const [slots,setSlots] = useState([]);
     useEffect(()=>{
         const slotsTemp = Array.from({ length: 24 }, (_, i) => {
@@ -28,7 +28,7 @@ export default function CourtColumn({ id,courtNumber, bookings,selectedDate }){
         <div >
             <CalendarItem key={0} type="courtHeader" data={courtNumber}/>
            {slots.map((slot, index) => (
-                <CalendarItem courtID = {id} selectedDate = {selectedDate} key={index+1} data={slot} idx={index} status={slot.isBooked ? "booked" : "available"} />
+                <CalendarItem trigger = {trigger} courtID = {id} selectedDate = {selectedDate} key={index+1} data={slot} idx={index} status={slot.isBooked ? "booked" : "available"} />
             ))}
         </div>
     )

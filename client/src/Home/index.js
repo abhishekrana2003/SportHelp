@@ -7,6 +7,7 @@ export default function Home() {
   const [bookingsData,setBookings] = useState([]);
   const [courtsData,setCourts] = useState([]);
   const [selectedDate,setSelectedDate] = useState(new Date());
+  const [triggerUpdate,setTrigger] = useState(false);
   const fetchCenters = async () => {
     try {
       const res = await axios.get("http://localhost:8080/center");
@@ -24,8 +25,8 @@ export default function Home() {
   },[]);
   return (
     <div className="h-screen flex justify-center items-center">
-      <Navbar centersData={centers}  updateCalendar = {updateCalendar} setDate={setSelectedDate}/>
-      <Calendar bookings={bookingsData} courts = {courtsData} selectedDate = {selectedDate}/>
+      <Navbar triggerUpdate={triggerUpdate} centersData={centers}  updateCalendar = {updateCalendar} setDate={setSelectedDate}/>
+      <Calendar trigger ={setTrigger} bookings={bookingsData} courts = {courtsData} selectedDate = {selectedDate}/>
     </div>
   );
 }

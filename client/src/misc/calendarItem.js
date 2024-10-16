@@ -15,7 +15,7 @@ export default function CalendarItem(props){
                 {props.status === "available" ? 
                     <div className="relative flex justify-center items-center h-full w-full">
                         <div onClick={handleAdd} className="bg-green-300  hover:bg-green-400 transition-all cursor-pointer flex justify-center items-center h-full w-full">Available</div>
-                       {showAddBooking &&  <AddBooking courtID={props.courtID} selectedDate = {props.selectedDate} hour = {props.idx} slotTiming={`${props.idx < 10 ? `0${props.idx}` : props.idx }:00 - ${props.idx+1 < 10 ? `0${props.idx+1}` : props.idx+1}:00`} toggleVisible = {handleAdd}/>}
+                       {showAddBooking &&  <AddBooking trigger = {props.trigger} courtID={props.courtID} selectedDate = {props.selectedDate} hour = {props.idx} slotTiming={`${props.idx < 10 ? `0${props.idx}` : props.idx }:00 - ${props.idx+1 < 10 ? `0${props.idx+1}` : props.idx+1}:00`} toggleVisible = {handleAdd}/>}
                     </div> :
                     <div className="h-full w-full flex justify-center items-center cursor-pointer bg-red-300 hover:bg-red-400 transition-all">
                         {props.data.bookedBy}

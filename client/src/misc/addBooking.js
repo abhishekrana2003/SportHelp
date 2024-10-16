@@ -6,7 +6,8 @@ export default function AddBooking({
     toggleVisible,
     slotTiming,
     selectedDate,
-    hour
+    hour,
+    trigger
 }){
     const [error,setError] = useState(false);
    
@@ -32,7 +33,7 @@ export default function AddBooking({
                     startTime: startTime,
                     name: clientName.trim(),
                 })
-                console.log(res);
+                trigger(prev=>!prev);
                 toggleVisible();
             }
             catch(e)

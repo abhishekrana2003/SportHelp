@@ -3,7 +3,8 @@ import axios from 'axios';
 export default function Navbar({
     centersData,
     updateCalendar,
-    setDate
+    setDate,
+    triggerUpdate
 }) {
     const dummyCenters = [
         { id: '1', name: 'Indiranagar', sports: ['Badminton', 'Squash'] }
@@ -72,12 +73,18 @@ export default function Navbar({
         setDate(dateObj);
    }
    useEffect(()=>{
-    if (selectedCenter.sports.length > 0) {
-       fetchBookings();
+    if (selectedCenter && selectedSport && selectedDate) {
+       handleSubmit();
     }
    },[selectedDate,selectedCenter,selectedSport])
+   useEffect(()=>{
+    if (selectedCenter && selectedSport && selectedDate)
+    {
+        handleSubmit();
+    }
+   },[triggerUpdate])
     return (
-        <div className="fixed top-10 shadow-lg border-gray-400  border-b-2">
+        <div className="fixed bottom-10 shadow-lg border-gray-400  border-b-2">
             <div className='flex px-5 py-2 gap-2 items-center'>
                 <div className='flex gap-2'>
                     <label className='font-bold' htmlFor="center-select">Center : </label>
