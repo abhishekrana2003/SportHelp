@@ -26,10 +26,10 @@ export async function viewBookings(req, res) {
     const courts = await Court.find({
       sportId: sport,
       centerId: center,
-    }).select("_id");
+    })
     const courtIds = courts.map((court) => court._id);
     const startDate = new Date(date);
-    startDate.setHours(0, 0, 0, 0);
+    // startDate.setHours(0, 0, 0, 0);
     const endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 1);
     const bookings = await Booking.find({
@@ -49,7 +49,7 @@ export async function viewBookings(req, res) {
   }
 }
 export async function createBooking(req, res) {
-  const { courtId, startTime } = req.body; 
+  const { courtId, startTime,name } = req.body; 
   const duration = 60; 
 
   try {
@@ -65,6 +65,10 @@ export async function createBooking(req, res) {
     const bookingEnd = new Date(bookingStart);
     bookingEnd.setMinutes(bookingStart.getMinutes() + duration);
 
+    console.log(startTime);
+    console.log(bookingStart);
+    console.log(bookingEnd);
+
     const conflictingBooking = await Booking.findOne({
       court: courtId,
       $or: [
@@ -78,12 +82,13 @@ export async function createBooking(req, res) {
     }
 
     const newBooking = new Booking({
-      user: req.user._id,
+      user: name,
       court: courtId,
       startTime: bookingStart,
       endTime: bookingEnd,
     });
 
+    console.log(newBooking);
     await newBooking.save();
     return response_200(res, "Booking created successfully", newBooking);
   } catch (error) {

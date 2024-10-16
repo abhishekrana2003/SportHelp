@@ -1,8 +1,7 @@
 import {model, Schema} from 'mongoose';
 const BookingSchema = new Schema({
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
         required: true
     },
     court: {
@@ -11,6 +10,10 @@ const BookingSchema = new Schema({
         required: true
     },
     startTime: {
+        type: Date,
+        required: true
+    },
+    endTime: {
         type: Date,
         required: true
     },
