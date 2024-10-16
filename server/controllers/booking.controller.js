@@ -49,7 +49,7 @@ export async function viewBookings(req, res) {
   }
 }
 export async function createBooking(req, res) {
-  const { courtId, startTime, user } = req.body; 
+  const { courtId, startTime } = req.body; 
   const duration = 60; 
 
   try {
@@ -78,7 +78,7 @@ export async function createBooking(req, res) {
     }
 
     const newBooking = new Booking({
-      user,
+      user: req.user._id,
       court: courtId,
       startTime: bookingStart,
       endTime: bookingEnd,

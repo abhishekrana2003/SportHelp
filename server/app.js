@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 import connDB from './db.config.js';
 connDB();
 
+import userRoutes from './routes/user.routes.js';
+app.use('/user', userRoutes);
+
 import centerRoutes from './routes/center.routes.js';
 app.use('/center', centerRoutes);
 
@@ -23,6 +26,7 @@ app.use('/court', courtRoutes);
 
 import bookingRoutes from './routes/booking.routes.js';
 app.use('/booking', bookingRoutes);
+
 
 app.listen(
     process.env.PORT ? process.env.PORT : 8080,
