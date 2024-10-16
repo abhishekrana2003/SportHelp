@@ -18,7 +18,7 @@ This project is a booking management system for a sports technology company, des
 ## Deployed Links
 
 - **Frontend**: [https://sport-help.vercel.app/](https://sport-help.vercel.app/)
-- **Backend**: [https://github.com/abhishekrana2003/SportHelp/tree/main/server](https://github.com/abhishekrana2003/SportHelp/tree/main/server)
+- **Backend**: [https://sporthelp.onrender.com](https://sporthelp.onrender.com)
 
 ## Assumptions & Limitations
 
