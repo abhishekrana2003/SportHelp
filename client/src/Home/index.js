@@ -10,7 +10,7 @@ export default function Home() {
   const [triggerUpdate,setTrigger] = useState(false);
   const fetchCenters = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/center");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/center`);
       setCenters(res.data.data);
     } catch (error) {
       console.error(error);

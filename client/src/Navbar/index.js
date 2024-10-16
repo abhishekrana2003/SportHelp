@@ -51,7 +51,7 @@ export default function Navbar({
         const isoDate = dateObj.toISOString().split('T')[0];
         console.log(dateObj);
         try {
-            const response = await axios.get(`http://localhost:8080/booking`, {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/booking`, {
                 params: {
                     center: selectedCenter,
                     sport: selectedSport,

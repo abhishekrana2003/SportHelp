@@ -28,7 +28,7 @@ export default function AddBooking({
             const startTime = formatStartTime(hour);
             console.log(startTime);
             try{
-                let res = await axios.post("http://localhost:8080/booking/",{
+                let res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/booking/`,{
                     courtId: courtID, 
                     startTime: startTime,
                     name: clientName.trim(),
