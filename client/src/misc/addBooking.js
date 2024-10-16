@@ -1,19 +1,49 @@
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 export default function AddBooking({
+    courtID,
     toggleVisible,
-    slotTiming
+    slotTiming,
+    selectedDate,
+    hour
 }){
     const [error,setError] = useState(false);
-    const handleSubmit = (e)=>{
+   
+    function formatStartTime(hour) {
+        const now = new Date(selectedDate); 
+        now.setUTCHours(hour, 0, 0, 0);
+        return now.toISOString();
+    }
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         let clientName = e.target.clientName.value;
         if(clientName.trim() === ""){
             setError(true);
             return;
         }
-        toggleVisible();
+        else
+        {
+            const startTime = formatStartTime(hour);
+            console.log(startTime);
+            try{
+                let res = await axios.post("http://localhost:8080/booking/",{
+                    courtId: courtID, 
+                    startTime: startTime,
+                    name: clientName.trim(),
+                })
+                console.log(res);
+                toggleVisible();
+            }
+            catch(e)
+            {
+                console.log(e);
+            }
+        }
     }
+    useEffect(()=>{
+        console.log(selectedDate);
+    },[])
     return(
         <div className="fixed top-1/2 flex justify-center items-center left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-md shadow-lg bg-white p-8 z-[100]">
             <div className="absolute top-0 m-2 font-semibold">
