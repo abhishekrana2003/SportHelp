@@ -28,12 +28,10 @@ import bookingRoutes from './routes/booking.routes.js';
 app.use('/booking', bookingRoutes);
 
 
-app.listen(
-    process.env.PORT ? process.env.PORT : 8080,
-    process.env.HOST ? process.env.HOST : '127.0.0.1',
-    console.log(
-      `listening on http://localhost:${
-        process.env.PORT ? process.env.PORT : 8080
-      }/`,
-    ),
-  );
+app.listen( process.env.PORT ? process.env.PORT : 8080, ()=>{
+  console.log(
+    `listening on http://localhost:${
+      process.env.PORT ? process.env.PORT : 8080
+    }/`,
+  )
+});
